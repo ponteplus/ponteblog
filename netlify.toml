@@ -1,6 +1,13 @@
+# Alternativa ao deploy primário (GitHub Pages).
+# Primário: .github/workflows/pages.yaml → Settings → Pages → GitHub Actions
+# Use Netlify só se quiser preview por branch ou segundo host.
+
 [build]
 publish = "public"
-command = "hugo mod tidy && hugo --gc --minify -b ${DEPLOY_PRIME_URL}"
+command = "hugo mod tidy && hugo --gc --minify -b ${URL}"
 
 [build.environment]
-HUGO_VERSION = "0.156.0"
+HUGO_VERSION = "0.161.1"
+
+[context.production.environment]
+HUGO_ENV = "production"

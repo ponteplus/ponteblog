@@ -1,0 +1,61 @@
+# CI em PRs: valida build sem publicar (deploy só em push na main → pages.yaml)
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  HUGO_VERSION: 0.161.1
+  GO_VERSION: "1.26"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: go.sum
+
+      - name: Cache Hugo modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.tool_cache }}/hugo_modules
+            _vendor
+          key: hugo-modules-${{ runner.os }}-${{ hashFiles('go.mod', 'go.sum', 'hugo.yaml') }}
+          restore-keys: |
+            hugo-modules-${{ runner.os }}-
+
+      - name: Install Hugo Extended
+        run: |
+          wget -qO "${{ runner.temp }}/hugo.deb" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+          hugo version
+
+      - name: Build (smoke test)
+        env:
+          HUGO_CACHEDIR: ${{ runner.tool_cache }}/hugo_modules
+        run: |
+          hugo mod tidy
+          hugo --gc --minify
+          test -f public/index.html
+          test -f public/sitemap.xml

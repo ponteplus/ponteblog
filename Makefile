@@ -18,7 +18,8 @@ new:
 	mkdir -p content/blog/$$YEAR/$$MONTH; \
 	$(HUGO) new blog/$$YEAR/$$MONTH/$(SLUG).md --kind blog; \
 	if [ -n "$(TITLE)" ]; then \
-		sed -i 's/^title: .*/title: $(TITLE)/' content/blog/$$YEAR/$$MONTH/$(SLUG).md; \
+		FILE="content/blog/$$YEAR/$$MONTH/$(SLUG).md"; \
+		python3 scripts/set-post-title.py "$$FILE" "$(TITLE)"; \
 	fi; \
 	echo "Criado: content/blog/$$YEAR/$$MONTH/$(SLUG).md"
 

@@ -22,5 +22,6 @@ alwaysApply: true
 
 ## Deploy
 
-- GitHub Pages / Netlify: HTTPS no provedor; `baseURL` em produção deve bater com o domínio real.
+- **Primário:** GitHub Pages via Actions (`pages: write`, `id-token: write` — já no workflow). `baseURL` em `hugo.yaml` = domínio canônico (`https://blog.ponteplus.com.br/`).
+- Netlify só se o time optar; não commitar tokens de deploy no repo.
 - Workflows: não desabilitar hooks nem pular verificação salvo pedido explícito do usuário.
