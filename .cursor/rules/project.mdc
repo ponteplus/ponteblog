@@ -34,8 +34,10 @@ content/                # páginas e posts
   about.md
   _index.md
 assets/css/custom.css   # cores Ponte+ (roxo #7B5EA7)
+data/authors.yaml       # cadastro de autores (slug, nome, links)
 layouts/archives.html   # override Hextra — agrupa por ano → mês
-hugo.yaml               # baseURL, menus, params.theme, permalinks
+layouts/authors/        # páginas /authors/ e /authors/<slug>/
+hugo.yaml               # baseURL, menus, taxonomias, permalinks
 archetypes/blog.md
 .github/workflows/pages.yaml
 ```

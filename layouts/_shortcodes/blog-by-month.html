@@ -29,7 +29,7 @@
 ## {{ $year }} - {{ $monthName }} {#{{ $year }}---{{ $monthSlug }}}
 
     {{- range .Pages }}
-- [{{ .Title }}]({{ .RelPermalink }})
+- [{{ .Title }}]({{ .RelPermalink }}){{ partial "author-byline-markdown.html" . }}
     {{- end }}
 
   {{- end -}}

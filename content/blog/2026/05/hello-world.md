@@ -7,7 +7,7 @@ tags:
   - boas-vindas
 draft: false
 authors:
-  - Renan Rey
+  - renan-rodrigues
 summary: Hello World Ponte+ — o que vamos compartilhar por aqui.
 ---
 

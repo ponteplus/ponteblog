@@ -21,28 +21,35 @@ markup:
 permalinks:
   blog: /blog/:slug/
 
+# Autores: front matter authors: [renan-rodrigues] → /authors/renan-rodrigues/
+taxonomies:
+  author: authors
+
 menu:
   main:
     - name: Blog
       pageRef: /blog
       weight: 1
+    - name: Equipe
+      pageRef: /authors
+      weight: 2
     - name: Sobre
       pageRef: /about
-      weight: 2
+      weight: 3
     - name: Site PontePlus
       url: https://ponteplus.com.br
-      weight: 3
+      weight: 4
       params:
         icon: external-link
     - name: Contato
       url: mailto:contato@ponteplus.com.br
-      weight: 4
-    - name: Busca
       weight: 5
+    - name: Busca
+      weight: 6
       params:
         type: search
     - name: Tema
-      weight: 6
+      weight: 7
       params:
         type: theme-toggle
 

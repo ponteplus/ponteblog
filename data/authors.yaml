@@ -1,0 +1,23 @@
+# Cadastro central — posts usam slug em authors: [renan-rodrigues]
+renan-rodrigues:
+  name: Renan Rodrigues
+  role: Backend e dados
+  image: ""
+  links:
+    linkedin: https://www.linkedin.com/in/renan-rodrigues-21991612a/
+    github: https://github.com/renanreyc
+
+niverton-felipe:
+  name: Niverton Felipe Sousa
+  role: Arquiteto e engenheiro de dados
+  image: ""
+  links:
+    linkedin: https://www.linkedin.com/in/niverton-felipe-2015541a4/
+    github: https://github.com/niverton-felipe
+
+samuel-agra:
+  name: Samuel Agra
+  role: Frontend e design
+  image: ""
+  links:
+    github: https://github.com/Samuel-Agra

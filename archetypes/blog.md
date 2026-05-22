@@ -5,7 +5,7 @@ slug: {{ .File.ContentBaseName }}
 tags: []
 draft: true
 authors:
-  - PontePlus
+  - renan-rodrigues  # slug em data/authors.yaml (renan-rodrigues | niverton-felipe | samuel-agra)
 summary:
 ---
 

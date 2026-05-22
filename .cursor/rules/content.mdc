@@ -16,10 +16,11 @@ date: 2026-05-22T10:00:00-03:00
 slug: meu-post          # URL: /blog/meu-post/
 tags: [ponteplus]
 draft: true             # false só ao publicar
-authors: [PontePlus]
+authors: [renan-rodrigues]   # slugs em data/authors.yaml — gera /authors/<slug>/
 summary: Uma frase para listagem e SEO.
 ```
 
+- **Autores:** usar slugs (`renan-rodrigues`, `niverton-felipe`, `samuel-agra`); cadastro em `data/authors.yaml`. Coautoria: vários slugs no array.
 - Slug em kebab-case; arquivo `content/blog/<YYYY>/<MM>/<slug>.md` (ex.: `content/blog/2026/05/meu-post.md`).
 - URL final é sempre `/blog/<slug>/` — o `permalink` em `hugo.yaml` ignora o caminho físico.
 - Use `make new SLUG=...` (cria automaticamente em ano/mês corrente).

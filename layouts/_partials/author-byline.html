@@ -1,0 +1,29 @@
+{{- /*
+  Byline de autor(es) para um post.
+  Parâmetros: page (obrigatório), format: inline | rich (default inline)
+*/ -}}
+{{- $page := .page -}}
+{{- $format := .format | default "inline" -}}
+{{- $slugs := $page.Params.authors -}}
+{{- $registry := site.Data.authors -}}
+{{- if $slugs -}}
+{{- $lazyLoading := site.Params.enableImageLazyLoading | default true -}}
+{{- range $i, $slug := $slugs -}}
+  {{- if $i -}}<span class="hx:mx-1">,</span>{{- end -}}
+  {{- $entry := index $registry $slug -}}
+  {{- $name := cond $entry $entry.name ($slug | humanize | title) -}}
+  {{- $url := printf "/authors/%s/" $slug | relURL -}}
+  {{- $image := "" -}}
+  {{- if $entry }}{{ $image = $entry.image }}{{ end -}}
+  {{- if eq $format "rich" -}}
+    <a href="{{ $url }}" class="hx:group hx:inline-flex hx:items-center hx:text-current hx:gap-x-1.5 hx:mx-1" title="{{ $name }}">
+      {{- with $image }}
+        <img src="{{ . | relURL }}" alt="{{ $name }}" class="hx:inline-block hx:h-4 hx:w-4 hx:rounded-full" {{ if $lazyLoading }}loading="lazy"{{ end }} />
+      {{- end -}}
+      <span class="hx:group-hover:underline">{{ $name }}</span>
+    </a>
+  {{- else -}}
+    <a href="{{ $url }}" class="hx:text-gray-600 hx:hover:text-primary-600 hx:dark:text-gray-400 hx:dark:hover:text-primary-400 hx:transition-colors">{{ $name }}</a>
+  {{- end -}}
+{{- end -}}
+{{- end -}}

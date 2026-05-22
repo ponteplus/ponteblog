@@ -1,0 +1,61 @@
+{{ define "main" }}
+  {{- $slug := .Data.Term -}}
+  {{- $entry := index site.Data.authors $slug -}}
+  {{- $name := cond $entry $entry.name ($slug | humanize | title) -}}
+  {{- $role := "" -}}
+  {{- $links := dict -}}
+  {{- if $entry }}{{ $role = $entry.role }}{{ $links = $entry.links | default dict }}{{ end -}}
+  {{- $months := dict
+        "01" "Janeiro" "02" "Fevereiro" "03" "Março" "04" "Abril"
+        "05" "Maio" "06" "Junho" "07" "Julho" "08" "Agosto"
+        "09" "Setembro" "10" "Outubro" "11" "Novembro" "12" "Dezembro"
+  -}}
+  {{- $pages := .Pages.ByDate.Reverse -}}
+  <div class="hx:mx-auto hx:flex hextra-max-page-width">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        <br class="hx:mt-1.5 hx:text-sm" />
+        <h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ $name }}</h1>
+        {{- with $role }}
+          <p class="hx:text-center hx:text-gray-500 hx:dark:text-gray-400 hx:mt-2">{{ . }}</p>
+        {{- end -}}
+        {{- if or $links.linkedin $links.github }}
+          <p class="hx:text-center hx:mt-4 hx:flex hx:flex-wrap hx:justify-center hx:gap-4 hx:text-sm">
+            {{- with $links.linkedin }}
+              <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="hx:text-primary-600 hx:dark:text-primary-400 hx:hover:underline">LinkedIn</a>
+            {{- end -}}
+            {{- with $links.github }}
+              <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="hx:text-primary-600 hx:dark:text-primary-400 hx:hover:underline">GitHub</a>
+            {{- end -}}
+          </p>
+        {{- end -}}
+        {{- with .Content }}
+          <div class="content hx:mt-8 hx:mb-8">{{ . }}</div>
+        {{- end -}}
+        <div class="hx:mb-12"></div>
+        {{- if $pages }}
+          {{- $byMonth := $pages.GroupByDate "2006-01" "desc" -}}
+          {{- range $byMonth }}
+            {{- $parts := split .Key "-" -}}
+            {{- $year := index $parts 0 -}}
+            {{- $monthNum := index $parts 1 -}}
+            {{- $monthName := index $months $monthNum -}}
+            <h2 class="hx:mt-8 hx:mb-3 hx:text-2xl hx:font-bold hx:text-slate-900 hx:dark:text-slate-100">{{ $year }} - {{ $monthName }}</h2>
+            <ul class="hx:list-disc hx:ml-6 hx:space-y-2">
+              {{- range .Pages }}
+                <li>
+                  <a href="{{ .RelPermalink }}" class="hx:font-medium hx:text-gray-700 hx:dark:text-gray-300 hx:hover:text-primary-600 hx:dark:hover:text-primary-400">{{ .Title }}</a>
+                  <span class="hx:text-sm hx:text-gray-500 hx:dark:text-gray-400"> ({{ .Date.Format "02/01/2006" }})</span>
+                </li>
+              {{- end }}
+            </ul>
+          {{- end }}
+        {{- else }}
+          <p class="hx:text-center hx:text-gray-500 hx:dark:text-gray-400">Nenhum artigo publicado ainda.</p>
+        {{- end -}}
+      </main>
+    </article>
+  </div>
+{{ end }}

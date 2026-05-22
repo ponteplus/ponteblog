@@ -1,0 +1,11 @@
+{{- /* Sufixo markdown para listas: · [Nome](/authors/slug/) */ -}}
+{{- $slugs := .Params.authors -}}
+{{- $registry := site.Data.authors -}}
+{{- if $slugs -}}
+{{- range $i, $slug := $slugs -}}
+{{- if eq $i 0 }} · {{ else }}, {{ end -}}
+{{- $entry := index $registry $slug -}}
+{{- $name := cond $entry $entry.name ($slug | humanize | title) -}}
+[{{ $name }}]({{ printf "/authors/%s/" $slug | relURL }})
+{{- end -}}
+{{- end -}}
