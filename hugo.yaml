@@ -1,0 +1,59 @@
+# PontePlus — blog estático (Hugo + Hextra)
+# https://gohugo.io/getting-started/configuration/
+
+baseURL: https://blog.ponteplus.com.br/
+languageCode: pt-br
+defaultContentLanguage: pt
+title: PontePlus Blog
+
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+# Posts em /blog/<slug>/ (sem ano/mês na URL)
+permalink:
+  blog: /blog/:slug/
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /blog
+      weight: 1
+    - name: Sobre
+      pageRef: /about
+      weight: 2
+    - name: Site PontePlus
+      url: https://ponteplus.com.br
+      weight: 3
+      params:
+        icon: external-link
+    - name: Contato
+      url: mailto:contato@ponteplus.com.br
+      weight: 4
+    - name: Busca
+      weight: 5
+      params:
+        type: search
+
+params:
+  description: Artigos e novidades sobre presença digital e gestão profissional — PontePlus.
+  navbar:
+    displayTitle: true
+    displayLogo: false
+  footer:
+    displayCopyright: true
+    displayPoweredBy: false
+  editURL:
+    enable: false
+  blog:
+    list:
+      displayTags: true
+      sortBy: date
+      sortOrder: desc
