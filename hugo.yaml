@@ -41,9 +41,18 @@ menu:
       weight: 5
       params:
         type: search
+    - name: Tema
+      weight: 6
+      params:
+        type: theme-toggle
 
 params:
   description: Artigos e novidades sobre presença digital e gestão profissional — PontePlus.
+  # Claro / escuro / sistema — toggle no rodapé e menu mobile (Hextra)
+  # Cores: assets/css/custom.css (--primary-hue, etc.)
+  theme:
+    default: light
+    displayToggle: true
   navbar:
     displayTitle: true
     displayLogo: false

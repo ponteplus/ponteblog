@@ -1,0 +1,37 @@
+---
+description: Tema Hextra — claro/escuro e cores Ponte+
+globs: assets/css/**,hugo.yaml
+alwaysApply: false
+---
+
+# Tema e aparência
+
+Tema base: **Hextra** (módulo Hugo). Não editar arquivos em `_vendor/` ou no cache do módulo.
+
+## Claro / escuro
+
+`hugo.yaml`:
+
+```yaml
+params:
+  theme:
+    default: light      # light | dark | system
+    displayToggle: true
+```
+
+Toggle no rodapé e menu mobile; preferência em `localStorage` (`color-theme`).
+
+## Cores Ponte+
+
+Arquivo único: `assets/css/custom.css` (carregado automaticamente pelo Hextra).
+
+- Primária: roxo Amethyst `#7B5EA7` via `--primary-hue`, `--primary-saturation`, `--primary-lightness`.
+- Definir em `:root` / `html.light` **e** `html.dark` / `.dark` (o tema escuro do Hextra sobrescreve `:root` sozinho).
+- Fundo claro: `#FAFAF8` (tokens `--ponte-*` no custom.css).
+
+Doc: https://imfing.github.io/hextra/docs/advanced/customization/
+
+## Build CSS
+
+- Dev: `main.css` + `custom.css` separados.
+- Produção: Hugo concatena tudo em `public/css/compiled/main.min.*.css` — após mudar CSS, rodar `make build` e hard refresh.

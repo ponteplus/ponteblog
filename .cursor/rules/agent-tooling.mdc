@@ -1,0 +1,27 @@
+---
+description: Disciplina de edição de arquivos para o agente
+alwaysApply: true
+---
+
+# Agent Tooling
+
+## Edit vs write
+
+- Arquivo novo ou mudança grande: `write` com o arquivo completo.
+- Mudança pequena: `edit` com `old_string` **único**, no máximo ~10 linhas de contexto.
+- Depois de `edit`, confirmar com leitura ou `grep` — sucesso do tool não garante arquivo íntegro.
+
+## Antes de editar
+
+- Ler o trecho atual do arquivo (não confiar só na memória da sessão).
+- Em `hugo.yaml` e front matter, respeitar indentação YAML.
+
+## Verificação
+
+- Após mudar conteúdo ou config: `make build` ou `hugo --minify` se Hugo estiver instalado.
+- Após CSS: reiniciar `make serve` e lembrar hard refresh no browser.
+
+## Não fazer sem pedido
+
+- Commit, push ou alterar secrets/CI tokens.
+- Copiar `public/` versionado desnecessariamente (é artefato de build).

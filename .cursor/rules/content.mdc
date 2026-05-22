@@ -1,0 +1,35 @@
+---
+description: Convenções de posts e páginas Markdown
+globs: content/**/*.md,archetypes/**/*.md
+alwaysApply: false
+---
+
+# Conteúdo (Markdown)
+
+## Posts (`content/blog/`)
+
+Front matter mínimo (ver `archetypes/blog.md`):
+
+```yaml
+title: "Título"
+date: 2026-05-22T10:00:00-03:00
+slug: meu-post          # URL: /blog/meu-post/
+tags: [ponteplus]
+draft: true             # false só ao publicar
+authors: [PontePlus]
+summary: Uma frase para listagem e SEO.
+```
+
+- Slug em kebab-case; arquivo `content/blog/<slug>.md`.
+- Idioma: pt-BR, tom direto (blog editorial, não manual da plataforma).
+- Imagens: URLs públicas (CDN/S3); evitar paths locais que não existem no build.
+
+## Páginas fixas
+
+- `about.md`: `type: about` no front matter (layout Hextra).
+- `_index.md`: home; shortcodes Hextra (`cards`, `card`) quando fizer sentido.
+
+## Links
+
+- Plataforma: `https://ponteplus.com.br`
+- Blog canônico: `baseURL` em `hugo.yaml` (`https://blog.ponteplus.com.br/`)

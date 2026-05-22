@@ -1,0 +1,164 @@
+/*
+ * Ponte+ — cores da marca no Hextra
+ * https://imfing.github.io/hextra/docs/advanced/customization/
+ *
+ * Paleta (pontedev/frontend/src/styles.scss):
+ *   --color-secondary #7B5EA7 (Amethyst)
+ *   --color-bg        #FAFAF8
+ */
+
+/* --------------------------------------------------------------------------
+ * Cor primária do tema (links, botões, focus, badges, “read more”…)
+ * Hextra lê --primary-hue | --primary-saturation | --primary-lightness
+ * -------------------------------------------------------------------------- */
+
+:root,
+html.light {
+  --primary-hue: 264deg;
+  --primary-saturation: 29%;
+  --primary-lightness: 56%;
+
+  --ponte-bg: #fafaf8;
+  --ponte-surface: #f5f5f2;
+  --ponte-purple: #7b5ea7;
+  --ponte-purple-light: #9b82c0;
+  --ponte-purple-dark: #5e4385;
+  --ponte-purple-50: #f5f2fa;
+  --ponte-purple-100: #e8e0f3;
+}
+
+/* Tema escuro: mesma família roxa, um pouco mais clara para contraste */
+html.dark,
+.dark {
+  --primary-hue: 264deg;
+  --primary-saturation: 32%;
+  --primary-lightness: 68%;
+
+  --ponte-bg: #111111;
+  --ponte-surface: #1a1a1f;
+  --ponte-purple: #9b82c0;
+  --ponte-purple-light: #b8a3d4;
+  --ponte-purple-dark: #7b5ea7;
+  --ponte-purple-50: #2a2438;
+  --ponte-purple-100: #3d3550;
+}
+
+/* --------------------------------------------------------------------------
+ * Fundos e superfícies
+ * -------------------------------------------------------------------------- */
+
+html.light body {
+  background-color: var(--ponte-bg);
+  color: #1c1917;
+}
+
+html.dark body {
+  background-color: var(--ponte-bg);
+}
+
+html.light .hextra-nav-container-blur {
+  background-color: rgb(255 255 255 / 0.9) !important;
+  border-bottom: 1px solid var(--ponte-purple-100);
+}
+
+html.dark .hextra-nav-container-blur {
+  background-color: rgb(17 17 17 / 0.9) !important;
+  border-bottom: 1px solid var(--ponte-purple-50);
+}
+
+html.light .hextra-footer {
+  background-color: var(--ponte-surface) !important;
+  border-top: 1px solid var(--ponte-purple-100);
+}
+
+html.dark .hextra-footer {
+  background-color: var(--ponte-surface) !important;
+  border-top: 1px solid var(--ponte-purple-50);
+}
+
+/* --------------------------------------------------------------------------
+ * Navegação — destaque roxo no item ativo e no hover
+ * -------------------------------------------------------------------------- */
+
+html.light nav a.hx\:font-medium,
+html.light nav button.hx\:font-medium {
+  color: var(--ponte-purple) !important;
+}
+
+html.dark nav a.hx\:font-medium,
+html.dark nav button.hx\:font-medium {
+  color: var(--ponte-purple-light) !important;
+}
+
+html.light nav a:hover,
+html.light nav button.hextra-nav-menu-toggle:hover {
+  color: var(--ponte-purple-dark) !important;
+}
+
+html.dark nav a:hover,
+html.dark nav button.hextra-nav-menu-toggle:hover {
+  color: var(--ponte-purple-light) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * Cards (home), conteúdo, sidebar
+ * -------------------------------------------------------------------------- */
+
+html.light .hextra-card {
+  background-color: #fff;
+  border-color: var(--ponte-purple-100);
+}
+
+html.light .hextra-card:hover {
+  border-color: var(--ponte-purple-light);
+}
+
+html.dark .hextra-card {
+  border-color: var(--ponte-purple-50);
+}
+
+html.dark .hextra-card:hover {
+  border-color: var(--ponte-purple);
+}
+
+html.light .hextra-card-icon svg,
+html.light .hextra-card:hover .hextra-card-icon svg {
+  color: var(--ponte-purple);
+}
+
+html.dark .hextra-card-icon svg,
+html.dark .hextra-card:hover .hextra-card-icon svg {
+  color: var(--ponte-purple-light);
+}
+
+html.light .content a {
+  color: var(--ponte-purple-dark);
+}
+
+html.light .content a:hover {
+  color: var(--ponte-purple);
+}
+
+html.dark .content a {
+  color: var(--ponte-purple-light);
+}
+
+html.dark .content a:hover {
+  color: var(--ponte-purple);
+}
+
+html.light .hextra-sidebar-active-item {
+  background-color: var(--ponte-purple-50);
+}
+
+html.dark .hextra-sidebar-active-item {
+  background-color: var(--ponte-purple-50);
+}
+
+/* Links “read more” do blog (Hextra usa hsl com saturação fixa) */
+html.light a[class*="primary-hue"],
+html.dark a[class*="primary-hue"] {
+  color: hsl(
+    var(--primary-hue) var(--primary-saturation) var(--primary-lightness)
+  ) !important;
+}

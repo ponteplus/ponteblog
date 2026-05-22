@@ -41,6 +41,12 @@ hugo.yaml            # Configuração
 
 URLs dos posts: `/blog/<slug>/` (sem ano/mês no path).
 
+## Tema claro / escuro e cores
+
+- **Alternar tema:** rodapé ou menu mobile → Claro / Escuro / Sistema (`hugo.yaml` → `params.theme`).
+- **Cores Ponte+ (roxo `#7B5EA7`, fundo claro):** `assets/css/custom.css` — ver [Customizing Hextra](https://imfing.github.io/hextra/docs/advanced/customization/).
+- Após mudar CSS: reinicie `make serve` e use hard refresh (Ctrl+Shift+R).
+
 ## Deploy
 
 ### GitHub Pages

@@ -1,0 +1,26 @@
+---
+description: Segurança — site estático, secrets e conteúdo
+alwaysApply: true
+---
+
+# Segurança (blog estático)
+
+## Secrets
+
+- Nunca commitar tokens, `.env`, chaves de API ou credenciais de deploy.
+- Não adicionar `mcp.json` com PATs ou senhas no repositório do blog.
+
+## Conteúdo
+
+- Markdown com `unsafe: true` no Hugo — evitar HTML/script arbitrário de origem não confiável em posts.
+- Links externos: URLs https explícitas; não embutir credenciais em URLs.
+
+## Escopo
+
+- Sem backend neste repo: não inventar APIs, auth ou armazenamento de posts em banco aqui.
+- O blog dos clientes continua no produto PontePlus; este repo é só editorial em Git.
+
+## Deploy
+
+- GitHub Pages / Netlify: HTTPS no provedor; `baseURL` em produção deve bater com o domínio real.
+- Workflows: não desabilitar hooks nem pular verificação salvo pedido explícito do usuário.
