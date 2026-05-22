@@ -30,7 +30,7 @@ summary: Uma frase para listagem e SEO.
 ## Páginas fixas
 
 - `about.md`: `type: about` no front matter (layout Hextra).
-- `_index.md` (home): listagem automática com `{{% blog-by-month %}}` — agrupa posts por `## Ano - Mês` e âncoras `#2026---maio` (estilo [AkitaOnRails](https://github.com/akitaonrails/akitaonrails.github.io)); não editar a lista à mão.
+- `_index.md` (home): listagem automática com `{{% blog-by-month %}}` — agrupa posts por `## Ano - Mês` e âncoras `#2026---maio`
 
 ## Links
 

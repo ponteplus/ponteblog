@@ -16,6 +16,7 @@
           {{- if and .Date .Params.authors }}<span class="hx:mx-1">·</span>{{ end -}}
           {{- partial "author-byline.html" (dict "page" . "format" "rich") -}}
         </div>
+        {{ partial "custom/tldr-link.html" . }}
         <div class="content">
           {{ .Content }}
         </div>

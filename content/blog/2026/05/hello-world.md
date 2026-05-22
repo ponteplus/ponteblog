@@ -13,7 +13,7 @@ summary: Hello World Ponte+ — o que vamos compartilhar por aqui.
 
 Olá! Seja muito bem-vindo ao blog da **Ponte+**.
 
-Este é o nosso `print("hello world")` — um post curtinho só ver se funciona sem ser na minha máquina (risos).
+Este é o nosso `print("hello world")` — um post curtinho só para ver se funciona sem ser na minha máquina (risos).
 
 Não precisa ser técnico pra acompanhar. Quando o assunto pedir mais profundidade, a gente aprende junto. Quando for só uma reflexão, fica leve.
 
