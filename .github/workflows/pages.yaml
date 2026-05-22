@@ -1,5 +1,4 @@
-# Deploy primário → GitHub Pages (https://blog.ponteplus.com.br/)
-# Netlify: alternativa opcional (netlify.toml)
+# Deploy → GitHub Pages (https://blog.ponteplus.com.br/)
 name: Deploy PontePlus Blog
 
 on:

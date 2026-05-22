@@ -13,7 +13,7 @@ Não é o blog SaaS dos clientes (esse fica no painel da plataforma). Aqui só c
 
 - Hugo Extended (≥ 0.156) + módulo Go `github.com/imfing/hextra`
 - Conteúdo em `content/` (pt-BR)
-- Deploy primário: GitHub Actions → Pages (`.github/workflows/pages.yaml`); CI em PRs (`.github/workflows/ci.yaml`). Netlify opcional.
+- Deploy: GitHub Actions → Pages (`.github/workflows/pages.yaml`); CI em PRs (`.github/workflows/ci.yaml`).
 
 ## Comandos
 

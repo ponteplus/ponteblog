@@ -86,10 +86,9 @@ URLs dos posts: `/blog/<slug>/` (sem ano/mês no path).
 
 | Item | Status |
 |------|--------|
-| `.github/workflows/pages.yaml` — deploy em push na `main` | ✅ primário |
+| `.github/workflows/pages.yaml` — deploy em push na `main` | ✅ |
 | `.github/workflows/ci.yaml` — build em PRs (sem publicar) | ✅ |
 | `static/CNAME` + `.nojekyll` para Pages | ✅ |
-| `netlify.toml` | ✅ opcional (segundo plano) |
 | Repositório remoto + Pages + DNS `blog.ponteplus.com.br` | ⏳ configurar no GitHub (passos abaixo) |
 
 ### Fase 5 — Integração com o produto ⏳
@@ -105,7 +104,7 @@ URLs dos posts: `/blog/<slug>/` (sem ano/mês no path).
 - **Cores Ponte+ (roxo `#7B5EA7`, fundo claro):** `assets/css/custom.css` — ver [Customizing Hextra](https://imfing.github.io/hextra/docs/advanced/customization/).
 - Após mudar CSS: reinicie `make serve` e use hard refresh (Ctrl+Shift+R).
 
-## Deploy (GitHub Pages — primário)
+## Deploy (GitHub Pages)
 
 ### CI/CD no repositório
 
@@ -142,10 +141,6 @@ Em **Settings → Branches → Branch protection rules** para `main`:
 
 - Exigir PR antes de merge (opcional para time pequeno).
 - **Require status checks:** `build` (workflow **CI**) — assim PRs só entram se o Hugo compilar.
-
-### Netlify (segundo plano)
-
-[`netlify.toml`](netlify.toml) permanece como alternativa (preview ou host extra). **Não** é necessário se só usar GitHub Pages. Se conectar o repo na Netlify, use o mesmo comando de build; o deploy primário continua sendo o Actions acima.
 
 ## Domínio sugerido
 
