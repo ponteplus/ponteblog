@@ -2,8 +2,6 @@
 
 Blog estático da **PontePlus** — artigos em Markdown, gerados com [Hugo](https://gohugo.io/) + [Hextra](https://imfing.github.io/hextra/).
 
-Repositório separado do monorepo da plataforma SaaS (`pontedev`). O blog dos **sites dos clientes** continua no produto; aqui fica o conteúdo editorial da marca.
-
 ## Pré-requisitos
 
 - [Hugo Extended](https://gohugo.io/installation/) (≥ 0.156)
@@ -64,8 +62,6 @@ Workflow em `.github/workflows/pages.yaml` — push em `main` publica o site.
 |-----|------|
 | Blog | `blog.ponteplus.com.br` |
 | Plataforma / landing | `ponteplus.com.br` |
-
-Na landing Angular, aponte o link **Blog** para `https://blog.ponteplus.com.br`.
 
 ## Licença
 
