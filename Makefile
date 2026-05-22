@@ -14,11 +14,13 @@ build: setup
 
 new:
 	@test -n "$(SLUG)" || (echo "Uso: make new SLUG=meu-artigo TITLE='Título opcional'"; exit 1)
-	$(HUGO) new blog/$(SLUG).md --kind blog
-	@if [ -n "$(TITLE)" ]; then \
-		sed -i 's/^title: .*/title: $(TITLE)/' content/blog/$(SLUG).md; \
-	fi
-	@echo "Criado: content/blog/$(SLUG).md"
+	@YEAR=$$(date +%Y); MONTH=$$(date +%m); \
+	mkdir -p content/blog/$$YEAR/$$MONTH; \
+	$(HUGO) new blog/$$YEAR/$$MONTH/$(SLUG).md --kind blog; \
+	if [ -n "$(TITLE)" ]; then \
+		sed -i 's/^title: .*/title: $(TITLE)/' content/blog/$$YEAR/$$MONTH/$(SLUG).md; \
+	fi; \
+	echo "Criado: content/blog/$$YEAR/$$MONTH/$(SLUG).md"
 
 clean:
 	rm -rf public resources _vendor

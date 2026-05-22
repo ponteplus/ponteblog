@@ -20,14 +20,16 @@ authors: [PontePlus]
 summary: Uma frase para listagem e SEO.
 ```
 
-- Slug em kebab-case; arquivo `content/blog/<slug>.md`.
+- Slug em kebab-case; arquivo `content/blog/<YYYY>/<MM>/<slug>.md` (ex.: `content/blog/2026/05/meu-post.md`).
+- URL final é sempre `/blog/<slug>/` — o `permalink` em `hugo.yaml` ignora o caminho físico.
+- Use `make new SLUG=...` (cria automaticamente em ano/mês corrente).
 - Idioma: pt-BR, tom direto (blog editorial, não manual da plataforma).
 - Imagens: URLs públicas (CDN/S3); evitar paths locais que não existem no build.
 
 ## Páginas fixas
 
 - `about.md`: `type: about` no front matter (layout Hextra).
-- `_index.md`: home; shortcodes Hextra (`cards`, `card`) quando fizer sentido.
+- `_index.md` (home): listagem automática com `{{% blog-by-month %}}` — agrupa posts por `## Ano - Mês` e âncoras `#2026---maio` (estilo [AkitaOnRails](https://github.com/akitaonrails/akitaonrails.github.io)); não editar a lista à mão.
 
 ## Links
 

@@ -27,12 +27,15 @@ make new SLUG=meu-post TITLE="Título"   # archetype em content/blog/
 ## Layout do repo
 
 ```
-content/          # páginas e posts
-  blog/*.md       # posts → URL /blog/<slug>/
+content/                # páginas e posts
+  blog/
+    _index.md
+    <YYYY>/<MM>/*.md    # posts → URL /blog/<slug>/ (path físico só p/ organização)
   about.md
   _index.md
 assets/css/custom.css   # cores Ponte+ (roxo #7B5EA7)
-hugo.yaml         # baseURL, menus, params.theme
+layouts/archives.html   # override Hextra — agrupa por ano → mês
+hugo.yaml               # baseURL, menus, params.theme, permalinks
 archetypes/blog.md
 .github/workflows/pages.yaml
 ```

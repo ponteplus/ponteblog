@@ -1,0 +1,38 @@
+{{- /*
+  Lista posts do blog agrupados por ano-mês (estilo AkitaOnRails).
+  Uso na home: {{% blog-by-month %}}  → markdown com ## 2026 - Maio {#2026---maio}
+  Uso no arquivo: {{% blog-by-month variant="archive" %}}  → HTML timeline
+*/ -}}
+{{- $variant := .Get "variant" | default "home" -}}
+{{- $section := .Get "section" | default "blog" -}}
+{{- $months := dict
+      "01" "Janeiro" "02" "Fevereiro" "03" "Março" "04" "Abril"
+      "05" "Maio" "06" "Junho" "07" "Julho" "08" "Agosto"
+      "09" "Setembro" "10" "Outubro" "11" "Novembro" "12" "Dezembro"
+-}}
+{{- $monthSlugs := dict
+      "01" "janeiro" "02" "fevereiro" "03" "marco" "04" "abril"
+      "05" "maio" "06" "junho" "07" "julho" "08" "agosto"
+      "09" "setembro" "10" "outubro" "11" "novembro" "12" "dezembro"
+-}}
+{{- $pages := where site.RegularPages "Section" $section -}}
+{{- $byMonth := $pages.GroupByDate "2006-01" "desc" -}}
+{{- if eq $variant "archive" -}}
+  {{- partial "blog-by-month-archive.html" (dict "pages" $pages "months" $months) -}}
+{{- else if $byMonth -}}
+  {{- range $byMonth -}}
+    {{- $parts := split .Key "-" -}}
+    {{- $year := index $parts 0 -}}
+    {{- $monthNum := index $parts 1 -}}
+    {{- $monthName := index $months $monthNum -}}
+    {{- $monthSlug := index $monthSlugs $monthNum -}}
+## {{ $year }} - {{ $monthName }} {#{{ $year }}---{{ $monthSlug }}}
+
+    {{- range .Pages }}
+- [{{ .Title }}]({{ .RelPermalink }})
+    {{- end }}
+
+  {{- end -}}
+{{- else -}}
+_Nenhum post publicado ainda._
+{{- end -}}

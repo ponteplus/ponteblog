@@ -1,0 +1,26 @@
+{{- /* Timeline por ano → mês (página /archives/) */ -}}
+{{- $pages := .pages -}}
+{{- $months := .months -}}
+{{- $years := $pages.GroupByDate "2006" "desc" -}}
+{{- range $years }}
+  <h2 class="hx:mt-8 hx:mb-2 hx:text-3xl hx:font-bold hx:text-slate-900 hx:dark:text-slate-100">{{ .Key }}</h2>
+  {{- $monthsInYear := .Pages.GroupByDate "01" "desc" }}
+  {{- range $monthsInYear }}
+    {{- $monthName := index $months .Key }}
+    <h3 class="hx:mt-6 hx:mb-3 hx:text-xl hx:font-semibold hx:text-gray-700 hx:dark:text-gray-300">{{ $monthName | default .Key }}</h3>
+    <div class="hextra-archive-timeline hx:ml-2 hx:pl-6 hx:mb-6">
+      {{- range .Pages }}
+        {{- $page := . -}}
+        <div class="hx:flex hx:items-baseline hx:gap-4 hx:py-2">
+          <time class="hx:shrink-0 hx:text-sm hx:tabular-nums hx:text-gray-500 hx:dark:text-gray-400" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02" }}</time>
+          <div>
+            <a href="{{ .RelPermalink }}" class="hx:font-medium hx:text-gray-700 hx:dark:text-gray-300 hx:transition-colors hx:duration-150 hx:hover:text-primary-600 hx:dark:hover:text-primary-400">{{ .Title }}</a>
+            {{- with .Params.tags }}
+              <span class="hx:text-xs hx:leading-7">{{ partial "tags.html" (dict "context" $page) }}</span>
+            {{- end }}
+          </div>
+        </div>
+      {{- end }}
+    </div>
+  {{- end }}
+{{- end }}

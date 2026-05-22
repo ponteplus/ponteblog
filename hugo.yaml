@@ -17,8 +17,8 @@ markup:
   highlight:
     noClasses: false
 
-# Posts em /blog/<slug>/ (sem ano/mês na URL)
-permalink:
+# Posts em /blog/<slug>/ — o path físico é só pasta de organização (ano/mês)
+permalinks:
   blog: /blog/:slug/
 
 menu:
