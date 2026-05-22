@@ -51,7 +51,7 @@ URLs dos posts: `/blog/<slug>/` (sem ano/mês no path).
 | Item | Status |
 |------|--------|
 | Stack Hugo Extended + Hextra (`go.mod`, `make setup`) | ✅ |
-| Um repo por marca (`pontedev/ponteblog`) | ✅ |
+| Um repo por marca (`ponteplus/ponteblog`) | ✅ |
 | Domínio planejado `https://blog.ponteplus.com.br/` em `hugo.yaml` | ✅ |
 | Blog SaaS dos clientes **não** migra para cá (só editorial da marca) | ✅ documentado |
 
@@ -97,57 +97,6 @@ URLs dos posts: `/blog/<slug>/` (sem ano/mês no path).
 |------|--------|
 | Decisão editorial no repositório | ✅ |
 | Link **Blog** na landing `ponteplus.com.br` → `https://blog.ponteplus.com.br` | ⏳ fora deste repo |
-
-## Tema claro / escuro e cores
-
-- **Alternar tema:** rodapé ou menu mobile → Claro / Escuro / Sistema (`hugo.yaml` → `params.theme`).
-- **Cores Ponte+ (roxo `#7B5EA7`, fundo claro):** `assets/css/custom.css` — ver [Customizing Hextra](https://imfing.github.io/hextra/docs/advanced/customization/).
-- Após mudar CSS: reinicie `make serve` e use hard refresh (Ctrl+Shift+R).
-
-## Deploy (GitHub Pages)
-
-### CI/CD no repositório
-
-| Workflow | Quando roda | O que faz |
-|----------|-------------|-----------|
-| [`.github/workflows/ci.yaml`](.github/workflows/ci.yaml) | PR → `main` | `hugo mod tidy` + build; falha se `public/index.html` ou sitemap não existirem |
-| [`.github/workflows/pages.yaml`](.github/workflows/pages.yaml) | Push → `main` | Build com `baseURL` do Pages + deploy em **github-pages** |
-
-Hugo **0.161.1** Extended no CI (alinhado ao `go.mod`). Cache de módulos Go/Hugo entre runs.
-
-### Publicar pela primeira vez
-
-1. **Criar o repo no GitHub** (ex. `ponteplus/ponteblog`) e enviar a branch `main`:
-   ```bash
-   git remote add origin git@github.com:ORG/ponteblog.git
-   git push -u origin main
-   ```
-2. No GitHub: **Settings → Pages**
-   - **Build and deployment → Source:** `GitHub Actions` (não “Deploy from branch”).
-3. Após o primeiro push, abra **Actions** → workflow **Deploy PontePlus Blog** e confira se passou (build + deploy).
-4. **Domínio customizado** (opcional mas recomendado):
-   - **Settings → Pages → Custom domain:** `blog.ponteplus.com.br`
-   - No DNS do domínio (Registro.br, Cloudflare, etc.):
-     - Tipo **CNAME**, nome `blog`, valor `<usuario-ou-org>.github.io` (o GitHub mostra o alvo exato na tela de Pages).
-   - Aguarde verificação e marque **Enforce HTTPS**.
-   - O arquivo [`static/CNAME`](static/CNAME) já declara `blog.ponteplus.com.br` no artefato publicado.
-5. Confirme `baseURL` em [`hugo.yaml`](hugo.yaml): `https://blog.ponteplus.com.br/` (já definido).
-
-URL padrão antes do CNAME: `https://<org>.github.io/<repo>/` — o workflow usa o `base_url` que o Pages injeta no build para links relativos corretos.
-
-### Proteção de branch (recomendado)
-
-Em **Settings → Branches → Branch protection rules** para `main`:
-
-- Exigir PR antes de merge (opcional para time pequeno).
-- **Require status checks:** `build` (workflow **CI**) — assim PRs só entram se o Hugo compilar.
-
-## Domínio sugerido
-
-| Uso | Host |
-|-----|------|
-| Blog | `blog.ponteplus.com.br` |
-| Plataforma / landing | `ponteplus.com.br` |
 
 ## Licença
 
